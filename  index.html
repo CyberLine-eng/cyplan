@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cyplan Engineering — Business websites, online stores and custom web tools. Request a free demo.">
+<meta name="theme-color" content="#2555f4">
+<title>Cyplan Engineering</title>
+
+<style>
+  /* நிறங்களை இங்கே மாற்றலாம் */
+  :root {
+    --paper: #f8f7f1;
+    --blue: #2555f4;
+    --orange: #ff763b;
+    --lime: #c7ec52;
+    --ink: #20201e;
+    --muted: #66685f;
+    --line: #dedfd5;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 30px; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.7 Arial, sans-serif;
+  }
+  a { color: inherit; text-decoration: none; }
+  button, input, textarea, select { font: inherit; }
+  button { cursor: pointer; }
+  button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible, a:focus-visible,
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 4px;
+  }
+  img { max-width: 100%; }
+  svg { vertical-align: middle; }
+  .wrap { width: min(1160px, 90%); margin: auto; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .brand { display: inline-flex; gap: 10px; align-items: center; font-weight: bold; }
+  .brand svg { width: 44px; height: 44px; flex-shrink: 0; }
+  .brand span { max-width: 180px; line-height: 1.3; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  nav { display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; }
+  nav a:hover { color: var(--blue); }
+
+  .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 21px;
+    border: 1px solid var(--ink);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--ink);
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+  }
+  .button:hover { transform: translateY(-2px); }
+  .primary { background: var(--blue); color: white; border-color: var(--blue); }
+  .lime { background: var(--lime); }
+  .white { background: white; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+    padding: 80px 0;
+  }
+  h1 {
+    font-size: clamp(52px, 6.8vw, 82px);
+    line-height: 1.07;
+    letter-spacing: -4px;
+    margin: 20px 0 25px;
+  }
+  h1 em, h2 em { color: var(--blue); font-family: Georgia, serif; }
+  .hero p { max-width: 470px; }
+  .hero-art { position: relative; padding: 45px 8px 45px 0; }
+  .hero-art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #e9eddd;
+  }
+  .sticker {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--lime);
+    text-align: center;
+    padding: 24px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.4;
+    transform: rotate(12deg);
+    z-index: 2;
+  }
+  .browser {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+    border-radius: 12px;
+    background: #e9eddd;
+    box-shadow: 9px 9px var(--ink);
+    transform: rotate(-5deg);
+  }
+  .browser-bar {
+    padding: 7px 15px;
+    border-bottom: 1px solid var(--ink);
+    background: white;
+    font-size: 10px;
+  }
+  .sample-shop { padding: 28px; min-height: 310px; position: relative; overflow: hidden; }
+  .sample-shop h2 {
+    font: bold 43px/1.05 Georgia, serif;
+    max-width: 240px;
+    position: relative;
+    z-index: 1;
+  }
+  .sample-shop p { font-size: 11px; max-width: 180px; }
+  .vase {
+    width: 130px;
+    height: 170px;
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+    background: var(--orange);
+    border-radius: 35% 35% 45% 45%;
+    box-shadow: inset -20px -10px #e96029;
+    transform: rotate(15deg);
+  }
+  .art-note {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 24px 0 0 15px;
+    background: white;
+    border: 1px solid var(--ink);
+    border-radius: 30px;
+    transform: rotate(4deg);
+    font-size: 12px;
+  }
+  .ticker {
+    background: var(--orange);
+    border-block: 1px solid var(--ink);
+    text-align: center;
+    padding: 17px;
+    font-weight: bold;
+    word-spacing: 16px;
+  }
+
+  section.block { padding: 80px 0; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  .section-head > p { max-width: 340px; }
+  h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.15; letter-spacing: -1.5px; margin: 12px 0; }
+  h3 { line-height: 1.35; }
+  .grid { display: grid; gap: 20px; }
+  .services { grid-template-columns: repeat(4, 1fr); }
+  .three { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 25px;
+    background: white;
+  }
+  .card p { color: var(--muted); font-size: 14px; }
+  .service:nth-child(2) { background: #eef1e3; }
+  .service:nth-child(3) { background: #eceefa; }
+  .service:nth-child(4) { background: #fff0e7; }
+  .service-icon { font-size: 32px; }
+  .text-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .ideas { background: #eeefe6; border-block: 1px solid var(--line); }
+  .concept { padding: 0; overflow: hidden; }
+  .concept-cover {
+    width: 100%;
+    min-height: 230px;
+    padding: 25px;
+    border: 0;
+    text-align: left;
+    color: var(--ink);
+  }
+  .concept-cover strong { display: block; margin: 30px 0; font: bold 35px/1.1 Georgia, serif; }
+  .cafe { background: var(--lime); }
+  .shop { background: #ffcfab; }
+  .creative { background: var(--blue); color: white; }
+  .card-body { padding: 24px; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0; }
+  .filter {
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--ink);
+  }
+  .filter.active { background: var(--ink); color: white; }
+  .empty {
+    grid-column: 1 / -1;
+    padding: 50px 20px;
+    text-align: center;
+    border: 1px dashed #b7baab;
+    border-radius: 18px;
+  }
+  .project { padding: 0; overflow: hidden; }
+  .project img { width: 100%; height: 210px; object-fit: cover; display: block; }
+  .project h3 { overflow-wrap: anywhere; }
+  .project p { white-space: pre-line; overflow-wrap: anywhere; }
+
+  .step-number { color: var(--blue); font-size: 36px; font-weight: bold; }
+  .logo-card { text-align: center; }
+  .logo-card svg { width: 110px; height: 110px; margin: 20px; }
+  .logo-card .actions { justify-content: center; }
+  .logo-preview.active { background: var(--lime); }
+
+  .contact { background: var(--blue); color: white; padding: 65px 0; }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+  .contact h2 { font-size: clamp(38px, 5vw, 62px); }
+  .contact-box { background: #ffffff12; padding: 25px; border: 1px solid #ffffff40; border-radius: 18px; }
+  .contact-link { display: block; padding: 17px 0; border-bottom: 1px solid #ffffff40; overflow-wrap: anywhere; }
+  .contact-link small { display: block; opacity: .8; }
+  footer { padding: 25px 0; font-size: 13px; color: var(--muted); }
+
+  .floating-wa {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #128c45;
+    color: white;
+    padding: 13px 18px;
+    border-radius: 40px;
+    box-shadow: 0 5px 25px #0002;
+    z-index: 5;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  dialog {
+    width: min(580px, 92vw);
+    max-height: 90vh;
+    overflow: auto;
+    border: 1px solid var(--ink);
+    border-radius: 18px;
+    padding: 28px;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  dialog::backdrop { background: #182020aa; }
+  .dialog-head { display: flex; justify-content: space-between; align-items: start; gap: 15px; }
+  .dialog-head h2 { font-size: 30px; }
+  .close { border: 0; background: transparent; padding: 0 8px; font-size: 30px; }
+  label { display: block; font-size: 14px; font-weight: bold; margin: 15px 0 5px; }
+  input, select, textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bec1b3;
+    border-radius: 8px;
+    background: white;
+    color: var(--ink);
+  }
+  textarea { resize: vertical; }
+  form .actions { margin-top: 20px; }
+  #preview-body { padding: 25px; border-radius: 12px; margin: 20px 0; }
+  #preview-body h3 { font: bold 35px/1.2 Georgia, serif; }
+  #logo-status { min-height: 25px; }
+
+  @media (max-width: 900px) {
+    .services { grid-template-columns: repeat(2, 1fr); }
+    .hero { gap: 25px; }
+    .sample-shop { padding: 20px; }
+    .sample-shop h2 { font-size: 35px; }
+    .vase { width: 100px; height: 145px; right: -15px; }
+  }
+  @media (max-width: 650px) {
+    header { flex-wrap: wrap; }
+    nav { width: 100%; justify-content: space-between; gap: 12px; }
+    .hero { grid-template-columns: 1fr; padding: 45px 0; }
+    h1 { letter-spacing: -2px; }
+    .hero-art { max-width: 450px; width: 100%; margin: auto; }
+    .three, .contact-layout { grid-template-columns: 1fr; }
+    .section-head { display: block; }
+    section.block { padding: 55px 0; }
+    .contact-layout { gap: 25px; }
+    .floating-wa { right: 12px; bottom: 12px; }
+    .ticker { font-size: 12px; word-spacing: 5px; }
+  }
+  @media (max-width: 380px) {
+    .services { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .button:hover { transform: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- மூன்று லோகோக்களின் SVG வடிவங்கள் -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <symbol id="logo-orbit" viewBox="0 0 128 128">
+      <path d="M93.7 34.3a42 42 0 1 0 0 59.4"
+        fill="none" stroke="#2555f4" stroke-width="19" stroke-linecap="round"/>
+      <path d="m76 65 18-18 18 18-18 18z" fill="#ff763b"/>
+      <circle cx="107" cy="23" r="10" fill="#c7ec52"/>
+    </symbol>
+    <symbol id="logo-monogram" viewBox="0 0 128 128">
+      <path d="M66 17H38L15 40v48l23 23h28V91H47L35 79V49l12-12h19V17Z" fill="#2555f4"/>
+      <path d="M74 17h39v20H94v17h17v20H94v17h19v20H74V17Z" fill="#ff763b"/>
+      <rect x="42" y="54" width="20" height="20" rx="4" fill="#c7ec52"/>
+    </symbol>
+    <symbol id="logo-spark" viewBox="0 0 128 128">
+      <path d="M54 15h20v29h29v20H74v29H54V64H25V44h29V15Z" fill="#ff763b"/>
+      <path d="M15 76h26v26H15zM87 87h26v26H87z" fill="#2555f4"/>
+      <path d="M92 15h21v21H92z" fill="#c7ec52"/>
+      <path d="M54 103h20v10H54z" fill="#ff763b"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header>
+    <a href="#" class="brand">
+      <svg viewBox="0 0 128 128" aria-hidden="true">
+        <use data-brand-mark href="#logo-orbit"></use>
+      </svg>
+      <span data-company>Cyplan Engineering</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#ideas">Demos</a>
+      <a href="#work">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="button lime" data-demo>Let's talk ↗</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Your next chapter starts online</p>
+        <h1>Big ideas.<br><em>Brilliant</em><br>websites.</h1>
+        <p class="muted">
+          A fresh website. A smarter online store. A tool that makes life easier.
+          We turn your next idea into something people can explore.
+        </p>
+        <div class="actions">
+          <button class="button primary" data-demo>Get a free demo ↗</button>
+          <a href="#ideas">Explore ideas ↓</a>
+        </div>
+        <p class="small muted" lang="ta">
+          முதலில் இலவச டெமோவைப் பாருங்கள். பிறகு முடிவு செய்யுங்கள்.
+        </p>
+      </div>
+
+      <div class="hero-art" aria-label="Illustrative website design">
+        <div class="sticker">GOOD IDEAS<br>DESERVE<br>GREAT SITES.</div>
+        <div class="browser">
+          <div class="browser-bar">● ● ● &nbsp; your-next-big-thing.site</div>
+          <div class="sample-shop">
+            <strong>form &amp; field.</strong>
+            <h2>Everyday things.<br><em>Extraordinary feeling.</em></h2>
+            <p>Objects for a considered life.</p>
+            <div class="vase" aria-hidden="true"></div>
+          </div>
+        </div>
+        <span class="art-note">✦ A little taste of what's possible</span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  THINK IT ✳ DESIGN IT ✳ BUILD IT ✳ MAKE IT YOURS
+</div>
+
+<section class="block wrap" id="services">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">01 / What we do</p>
+      <h2>Your idea.<br>Our kind of project.</h2>
+    </div>
+    <p class="muted">உங்கள் தொழிலுக்கு ஏற்ற இணையதளம் மற்றும் வெப் டூல்களை உருவாக்கலாம்.</p>
+  </div>
+
+  <div class="grid services">
+    <article class="card service">
+      <span class="service-icon" aria-hidden="true">↗</span>
+      <h3>A home for your business</h3>
+      <p>A memorable business website that helps customers discover and contact you.</p>
+      <button class="text-button" data-demo="Business website">Let's build it ↗</button>
+    </article>
+    <article class="card service">
+      <span class="service-icon" aria-hidden="true">▧</span>
+      <h3>Your shop, always open</h3>
+      <p>Show your products beautifully with an online store or product catalogue.</p>
+      <button class="text-button" data-demo="Online store">Let's build it ↗</button>
+    </article>
+    <article class="card service">
+      <span class="service-icon" aria-hidden="true">⌘</span>
+      <h3>Less busywork. More doing.</h3>
+      <p>Booking pages, dashboards and useful web tools built around your workflow.</p>
+      <button class="text-button" data-demo="Custom web tool">Let's build it ↗</button>
+    </article>
+    <article class="card service">
+      <span class="service-icon" aria-hidden="true">✳</span>
+      <h3>A fresh start for your site</h3>
+      <p>Refresh your website with a clear layout and a comfortable mobile experience.</p>
+      <button class="text-button" data-demo="Website refresh">Let's refresh it ↗</button>
+    </article>
+  </div>
+</section>
+
+<div class="ideas">
+  <section class="block wrap" id="ideas">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">02 / A little inspiration</p>
+        <h2>Oh, the possibilities.</h2>
+      </div>
+      <p class="muted">These are illustrative design concepts. Your website can be tailored to your business.</p>
+    </div>
+
+    <div class="grid three">
+      <article class="card concept">
+        <button class="concept-cover cafe" data-preview="cafe">
+          <span class="eyebrow">Restaurant concept</span>
+          <strong>Good food.<br>Great days.</strong>
+          <span>THE DAILY TABLE ↗</span>
+        </button>
+        <div class="card-body">
+          <h3>A taste of something good.</h3>
+          <p>A welcoming menu, your location and a direct line to book a table.</p>
+          <button class="text-button" data-preview="cafe">Explore concept ↗</button>
+        </div>
+      </article>
+
+      <article class="card concept">
+        <button class="concept-cover shop" data-preview="shop">
+          <span class="eyebrow">Online store concept</span>
+          <strong>Objects.<br>With feeling.</strong>
+          <span>FORM &amp; FIELD ↗</span>
+        </button>
+        <div class="card-body">
+          <h3>From browsing to “I love it.”</h3>
+          <p>A thoughtful product catalogue that gives your collection room to shine.</p>
+          <button class="text-button" data-preview="shop">Explore concept ↗</button>
+        </div>
+      </article>
+
+      <article class="card concept">
+        <button class="concept-cover creative" data-preview="creative">
+          <span class="eyebrow">Portfolio concept</span>
+          <strong>Different<br>by design.</strong>
+          <span>YOUR CREATIVE SPACE ↗</span>
+        </button>
+        <div class="card-body">
+          <h3>Let your work do the talking.</h3>
+          <p>A memorable space for your projects, your story and your next opportunity.</p>
+          <button class="text-button" data-preview="creative">Explore concept ↗</button>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<section class="block wrap" id="work">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">03 / The project space</p>
+      <h2>Good things in the making.</h2>
+    </div>
+    <p class="muted">எங்கள் புதிய ப்ராஜெக்ட்கள் இங்கே சேர்க்கப்படும்.</p>
+  </div>
+
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button class="filter active" data-filter="All" aria-pressed="true">All projects</button>
+    <button class="filter" data-filter="Website" aria-pressed="false">Websites</button>
+    <button class="filter" data-filter="E-commerce" aria-pressed="false">E-commerce</button>
+    <button class="filter" data-filter="Web app" aria-pressed="false">Web apps</button>
+  </div>
+  <div id="projects" class="grid three" aria-live="polite"></div>
+</section>
+
+<section class="block wrap">
+  <p class="eyebrow">04 / From hello to launch</p>
+  <h2>Big possibilities. Simple steps.</h2>
+  <div class="grid three">
+    <article>
+      <span class="step-number">01</span>
+      <h3>Tell us your idea.</h3>
+      <p class="muted">Share your business, your goals and any examples you like.</p>
+    </article>
+    <article>
+      <span class="step-number">02</span>
+      <h3>Explore a free demo.</h3>
+      <p class="muted">Discuss the design, pricing and any available discounts.</p>
+    </article>
+    <article>
+      <span class="step-number">03</span>
+      <h3>Let's make it happen.</h3>
+      <p class="muted">Once the scope and price are agreed, we build your website.</p>
+    </article>
+  </div>
+</section>
+
+<section class="block wrap" id="logos">
+  <p class="eyebrow">Logo concepts</p>
+  <h2>Three marks. One big idea.</h2>
+  <p class="muted">Preview a logo or download its SVG.</p>
+
+  <div class="grid three">
+    <article class="card logo-card">
+      <svg viewBox="0 0 128 128" role="img" aria-label="Orbit logo">
+        <use href="#logo-orbit"></use>
+      </svg>
+      <h3>01 / Orbit</h3>
+      <div class="actions">
+        <button class="button logo-preview" data-logo="orbit" aria-pressed="false">Preview</button>
+        <button class="text-button" data-download="orbit">SVG ↓</button>
+      </div>
+    </article>
+    <article class="card logo-card">
+      <svg viewBox="0 0 128 128" role="img" aria-label="Structure logo">
+        <use href="#logo-monogram"></use>
+      </svg>
+      <h3>02 / Structure</h3>
+      <div class="actions">
+        <button class="button logo-preview" data-logo="monogram" aria-pressed="false">Preview</button>
+        <button class="text-button" data-download="monogram">SVG ↓</button>
+      </div>
+    </article>
+    <article class="card logo-card">
+      <svg viewBox="0 0 128 128" role="img" aria-label="Spark logo">
+        <use href="#logo-spark"></use>
+      </svg>
+      <h3>03 / Spark</h3>
+      <div class="actions">
+        <button class="button logo-preview" data-logo="spark" aria-pressed="false">Preview</button>
+        <button class="text-button" data-download="spark">SVG ↓</button>
+      </div>
+    </article>
+  </div>
+
+  <p id="logo-status" class="small muted" aria-live="polite"></p>
+  <p class="small muted">Logo previews apply to this page only.</p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-layout">
+    <div>
+      <p class="eyebrow">Have a little idea? Or a really big one?</p>
+      <h2>Let's make<br>something click.</h2>
+      <p lang="ta">தமிழிலும் பேசலாம். ஒரு மெசேஜ் அனுப்புங்கள்!</p>
+      <button class="button white" data-demo>I'd love a free demo ↗</button>
+    </div>
+    <div class="contact-box">
+      <a class="contact-link" data-wa href="https://wa.me/94778052494" target="_blank" rel="noopener noreferrer">
+        <small>WHATSAPP</small>
+        <span data-phone>+94 77 805 2494</span> ↗
+      </a>
+      <a class="contact-link" data-mail href="mailto:thaswinith24@gmail.com">
+        <small>EMAIL</small>
+        <span data-email>thaswinith24@gmail.com</span> ↗
+      </a>
+      <a class="contact-link" data-call href="tel:+94778052494">
+        <small>PREFER A CALL?</small>
+        <span data-phone>+94 77 805 2494</span> ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  © <span id="year"></span> <span data-company>Cyplan Engineering</span>
+  · <a href="#logos">Logo concepts</a>
+  · <a href="#">Back to top ↑</a>
+</footer>
+
+<a class="floating-wa" data-wa href="https://wa.me/94778052494"
+   target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M20 4a10 10 0 0 0-16 12L2 22l6-2A10 10 0 0 0 20 4Z"
+      stroke="currentColor" stroke-width="1.8"/>
+    <path d="M8 7c-2 2 1 7 5 9 2 1 4 0 4-2l-3-1-1 1c-2-1-3-2-4-4l1-1-1-2H8Z"
+      fill="currentColor"/>
+  </svg>
+  WhatsApp
+</a>
+
+<dialog id="demo-dialog" aria-labelledby="demo-title">
+  <div class="dialog-head">
+    <h2 id="demo-title">Your free demo starts here.</h2>
+    <button class="close" data-close aria-label="Close">×</button>
+  </div>
+  <p class="muted">Tell us your idea. Choose WhatsApp or email to prepare your message.</p>
+
+  <form id="demo-form">
+    <label for="customer-name">Your name *</label>
+    <input id="customer-name" name="name" autocomplete="name" maxlength="100" required>
+
+    <label for="service">What would you like? *</label>
+    <select id="service" name="service" required>
+      <option value="">Choose a service</option>
+      <option>Business website</option>
+      <option>Online store</option>
+      <option>Custom web tool</option>
+      <option>Website refresh</option>
+    </select>
+
+    <label for="brief">Your project idea *</label>
+    <textarea id="brief" name="brief" rows="4" maxlength="2000" required></textarea>
+
+    <div class="actions">
+      <button class="button primary" type="submit" value="whatsapp">WhatsApp ↗</button>
+      <button class="button" type="submit" value="email">Email ↗</button>
+    </div>
+    <p class="small muted">Your messaging app opens next. Review your message and press Send there.</p>
+  </form>
+</dialog>
+
+<dialog id="preview-dialog" aria-labelledby="preview-title">
+  <div class="dialog-head">
+    <h2 id="preview-title">Design concept</h2>
+    <button class="close" data-close aria-label="Close">×</button>
+  </div>
+  <div id="preview-body"></div>
+  <p class="small muted">Illustrative design concept, not a completed customer project.</p>
+  <button class="button primary" id="request-concept">Request something like this ↗</button>
+</dialog>
+
+<script>
+/* ==========================================================
+   உங்கள் விவரங்களை இங்கே மாற்றுங்கள்
+   logo: "orbit", "monogram" அல்லது "spark"
+   projects: உங்கள் ப்ராஜெக்ட்களை இந்தப் பட்டியலில் சேர்க்கவும்
+   ========================================================== */
+
+const SITE = {
+  company: "Cyplan Engineering",
+  phone: "+94778052494",
+  email: "thaswinith24@gmail.com",
+  logo: "orbit",
+
+  projects: [
+    /*
+    {
+      title: "உங்கள் ப்ராஜெக்ட் பெயர்",
+      category: "Website",
+      description: "உங்கள் ப்ராஜெக்ட் பற்றிய விளக்கம்.",
+      url: "https://example.com",
+      imageUrl: "images/project-1.jpg"
+    },
+    {
+      title: "உங்கள் ஆன்லைன் கடை",
+      category: "E-commerce",
+      description: "இந்த ப்ராஜெக்ட் பற்றிய விளக்கம்.",
+      url: "https://example.com",
+      imageUrl: "images/project-2.jpg"
+    }
+    */
+  ]
+};
+
+/*
+  category மதிப்புகள்:
+  "Website", "E-commerce", "Web app"
+
+  படம் இல்லாவிட்டால்:
+  imageUrl: ""
+
+  படங்கள் பயன்படுத்தினால் அவற்றையும் hosting-ல் upload செய்யவும்.
+*/
+
+const $ = selector => document.querySelector(selector);
+const $$ = selector => [...document.querySelectorAll(selector)];
+
+const digits = SITE.phone.replace(/\D/g, "");
+const displayPhone = digits.startsWith("94") && digits.length === 11
+  ? `+94 ${digits.slice(2, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`
+  : SITE.phone;
+
+document.title = `${SITE.company} — Ideas into websites.`;
+$("#year").textContent = new Date().getFullYear();
+
+$$("[data-company]").forEach(el => el.textContent = SITE.company);
+$$("[data-phone]").forEach(el => el.textContent = displayPhone);
+$$("[data-email]").forEach(el => el.textContent = SITE.email);
+
+$$("[data-wa]").forEach(el => {
+  const message = `Hello ${SITE.company}! I'd like to discuss a website idea.`;
+  el.href = `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
+});
+$$("[data-mail]").forEach(el => el.href = `mailto:${SITE.email}`);
+$$("[data-call]").forEach(el => el.href = `tel:+${digits}`);
+
+/* லோகோ தேர்வு மற்றும் SVG பதிவிறக்கம் */
+function previewLogo(id) {
+  const selected = ["orbit", "monogram", "spark"].includes(id) ? id : "orbit";
+
+  $$("[data-brand-mark]").forEach(el => {
+    el.setAttribute("href", `#logo-${selected}`);
+  });
+
+  $$("[data-logo]").forEach(button => {
+    const active = button.dataset.logo === selected;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  $("#logo-status").textContent = `Previewing: ${selected}`;
+}
+
+previewLogo(SITE.logo);
+
+$$("[data-logo]").forEach(button => {
+  button.addEventListener("click", () => previewLogo(button.dataset.logo));
+});
+
+$$("[data-download]").forEach(button => {
+  button.addEventListener("click", () => {
+    const id = button.dataset.download;
+    const symbol = document.getElementById(`logo-${id}`);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">${symbol.innerHTML}</svg>`;
+    const blob = new Blob([svg], { type: "image/svg+xml" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = `cyplan-${id}.svg`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+});
+
+/* ப்ராஜெக்ட்களைக் காட்டுதல் */
+function renderProjects(category = "All") {
+  const container = $("#projects");
+  container.replaceChildren();
+
+  const projects = SITE.projects.filter(project =>
+    category === "All" || project.category === category
+  );
+
+  if (!projects.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+
+    const title = document.createElement("h3");
+    title.textContent = "Every great project starts with an idea.";
+
+    const description = document.createElement("p");
+    description.className = "muted";
+    description.textContent = SITE.projects.length
+      ? "No projects in this category yet. Try another category."
+      : "Our project collection is just getting started. Explore the concepts above.";
+
+    empty.append(title, description);
+    container.append(empty);
+    return;
+  }
+
+  projects.forEach(project => {
+    const card = document.createElement("article");
+    card.className = "card project";
+
+    if (project.imageUrl) {
+      const image = document.createElement("img");
+      image.src = project.imageUrl;
+      image.alt = `${project.title} project preview`;
+      image.loading = "lazy";
+      card.append(image);
+    }
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+
+    const type = document.createElement("span");
+    type.className = "eyebrow";
+    type.textContent = project.category;
+
+    const title = document.createElement("h3");
+    title.textContent = project.title;
+
+    const description = document.createElement("p");
+    description.textContent = project.description;
+
+    body.append(type, title, description);
+
+    try {
+      const url = new URL(project.url);
+      if (["https:", "http:"].includes(url.protocol)) {
+        const link = document.createElement("a");
+        link.className = "text-button";
+        link.href = url.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "View project ↗";
+        body.append(link);
+      }
+    } catch {
+      /* இணைப்பு இல்லாத ப்ராஜெக்ட்களையும் காட்டலாம் */
+    }
+
+    card.append(body);
+    container.append(card);
+  });
+}
+
+renderProjects();
+
+$$("[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    $$("[data-filter]").forEach(item => {
+      const active = item === button;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    renderProjects(button.dataset.filter);
+  });
+});
+
+/* இலவச டெமோ கோரிக்கை */
+const demoDialog = $("#demo-dialog");
+const previewDialog = $("#preview-dialog");
+
+function openDemo(service = "") {
+  if (previewDialog.open) previewDialog.close();
+  $("#service").value = service;
+  if (!demoDialog.open) demoDialog.showModal();
+}
+
+$$("[data-demo]").forEach(button => {
+  button.addEventListener("click", () => openDemo(button.dataset.demo || ""));
+});
+
+$$("dialog").forEach(dialog => {
+  dialog.querySelector("[data-close]").addEventListener("click", () => dialog.close());
+
+  dialog.addEventListener("click", event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+
+    if (
+      event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom
+    ) {
+      dialog.close();
+    }
+  });
+});
+
+$("#demo-form").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const nameInput = $("#customer-name");
+  const briefInput = $("#brief");
+
+  nameInput.setCustomValidity(nameInput.value.trim() ? "" : "Please enter your name.");
+  briefInput.setCustomValidity(briefInput.value.trim() ? "" : "Please describe your idea.");
+
+  if (!event.currentTarget.reportValidity()) return;
+
+  const service = $("#service").value;
+  const message =
+    `Hello ${SITE.company}!\n\n` +
+    `I'm ${nameInput.value.trim()}.\n` +
+    `I'd like a free demo for: ${service}.\n\n` +
+    `My idea: ${briefInput.value.trim()}\n\n` +
+    `Please share the options, pricing and any available discounts. Thank you!`;
+
+  if (event.submitter?.value === "email") {
+    window.location.href =
+      `mailto:${SITE.email}` +
+      `?subject=${encodeURIComponent("Free demo request — " + service)}` +
+      `&body=${encodeURIComponent(message)}`;
+  } else {
+    window.open(
+      `https://wa.me/${digits}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+});
+
+$$("#demo-form input, #demo-form textarea").forEach(field => {
+  field.addEventListener("input", () => field.setCustomValidity(""));
+});
+
+/* மாதிரி இணையதளங்கள் */
+const CONCEPTS = {
+  cafe: {
+    title: "The Daily Table",
+    heading: "Come hungry. Leave happy.",
+    description: "A welcoming website idea for a café or restaurant.",
+    items: ["Your seasonal menu", "Location and opening hours", "Table enquiries"],
+    color: "#c7ec52",
+    ink: "#20201e",
+    service: "Business website"
+  },
+  shop: {
+    title: "Form & Field",
+    heading: "Little things. Lovely feeling.",
+    description: "An online store idea for your own product collection.",
+    items: ["Product collections", "Product details and photography", "Ordering options"],
+    color: "#ffcfab",
+    ink: "#20201e",
+    service: "Online store"
+  },
+  creative: {
+    title: "Different by Design",
+    heading: "Work with personality.",
+    description: "A portfolio idea for designers, photographers and makers.",
+    items: ["Selected projects", "Your story", "A clear way to get in touch"],
+    color: "#2555f4",
+    ink: "#ffffff",
+    service: "Business website"
+  }
+};
+
+$$("[data-preview]").forEach(button => {
+  button.addEventListener("click", () => {
+    const concept = CONCEPTS[button.dataset.preview];
+    const body = $("#preview-body");
+
+    $("#preview-title").textContent = concept.title;
+    body.replaceChildren();
+    body.style.background = concept.color;
+    body.style.color = concept.ink;
+
+    const heading = document.createElement("h3");
+    heading.textContent = concept.heading;
+
+    const description = document.createElement("p");
+    description.textContent = concept.description;
+
+    const list = document.createElement("ul");
+    concept.items.forEach(text => {
+      const item = document.createElement("li");
+      item.textContent = text;
+      list.append(item);
+    });
+
+    body.append(heading, description, list);
+
+    $("#request-concept").onclick = () => openDemo(concept.service);
+    previewDialog.showModal();
+  });
+});
+</script>
+</body>
+</html>
